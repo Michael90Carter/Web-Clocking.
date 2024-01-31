@@ -2,7 +2,36 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class = "container-xl">
+   <div class="card text-center">
+      <div class="card-header">
+         Trial Analytics Ltd
+      </div>
+      <div class="card-body">
+         <h1>Welcome</h1>
+      
+         <p class="card-text"> 
+             <div id="date">.</div>
+                <div id="time">.</div>
+         
+                 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+                 <script>
+                    $(document).ready(function(){
+                        var interval = setInterval(function(){
+                            var momentNow = moment();
+                            $('#date').html(momentNow.format('dddd').substring(0,3).toUpperCase()+', '+
+                                momentNow.format('DD MMMM YYYY'));
+                            $('#time').html(momentNow.format('hh:mm:ss A'));
+                        },100);
+                    });
+                 </script>
+         </p>
+         <a href="#" class="btn btn-primary">SignIn</a>
+      </div>
+      <div class="card-footer text-body-secondary">
+         A product of Michael tech Ltd.
+      </div>
+   </div>
 </div>
+

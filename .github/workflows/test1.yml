@@ -1,6 +1,7 @@
 name: test workflow
-'on': push
-push: branches:[''master'']
+on: 
+ push:
+  branches: [ master ]
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub

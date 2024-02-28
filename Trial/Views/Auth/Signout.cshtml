@@ -1,0 +1,112 @@
+﻿
+﻿@{
+    ViewData["Title"] = "SignOut";
+}
+
+<div class="container-md">
+    <div class="row vh-100 d-flex justify-content-center">
+        <div class="col-12 align-self-center">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="card">
+                            <div class="card-body p-0 auth-header-box">
+                                <div class="text-center p-4">
+                                    <a href="index.html" class="logo logo-admin">
+                                        <img src="~/images/logos/Trial.png" alt="Trial"
+                                             class="auth-logo">
+                                    </a>
+                                    <h4 class="mt-4 mb-1 fw-semibold font-18">Trial Analytics</h4>
+                                    <p class="text-muted  mb-0">Create An Account</p>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <form class="auth-form my-4" id="signUp" name="signUp" method="post" autocomplete="off">
+
+                                    <div row>
+
+                                        <div col>
+                                            <div class="form-group">
+                                            <label for="FirstName">First Name</label>
+                                            <div class="input-group mb-3">
+                                                <span class="auth-form-icon">
+                                                    <i class="dripicons-user"></i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Enter First Name">
+                                            </div>
+                                        </div><!--end form-group-->
+                                        <div class="form-group">
+                                            <label for="LastName">Last Name</label>
+                                            <div class="input-group mb-3">
+                                                <span class="auth-form-icon">
+                                                    <i class="dripicons-user"></i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Enter Last Name">
+                                            </div>
+                                        </div><!--end form-group-->
+                                        </div>
+                                        
+                                    </div>                                   
+
+                                    <div class="form-group">
+                                        <label for="EmailAddress">Email Address</label>
+                                        <div class="input-group mb-3">
+                                            <span class="auth-form-icon">
+                                                <i class="dripicons-user"></i>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                                        </div>
+                                    </div><!--end form-group-->
+
+                                    
+                                    <div class="form-group">
+                                        <label for="department">Department</label>
+                                        <div class="input-group mb-3">
+                                            <span class="auth-form-icon">
+                                                <i class="dripicons-lock"></i>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Department">
+                                        </div>
+                                    </div><!--end form-group-->
+
+                                    <div class="form-group">
+                                        <label for="userpassword">Password</label>
+                                        <div class="input-group mb-3">
+                                            <span class="auth-form-icon">
+                                                <i class="dripicons-lock"></i>
+                                            </span>
+                                            <input type="password" class="form-control" placeholder="Enter password">
+                                        </div>
+                                    </div><!--end form-group-->
+
+                                 
+                                    <div class="form-group mb-0 row">
+                                            <div class="col-12">
+                                                <div class="d-grid mt-3">
+                                                    <button class="btn btn-outline-primary btn-round d-flex mx-auto justify-content-center" style="min-width:200px;" type="submit" id="signup-submit-button">Register</button>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+                                    </form><!--end form-->
+                                <div class="m-3 text-center text-muted">
+                                    <p class="mb-0">
+                                        Already have an account ? <a href="/signin"
+                                                                   class="text-primary ms-2">SignIn</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <!--end card-body-->
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!--end card-body-->
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+</div>

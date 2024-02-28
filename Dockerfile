@@ -1,28 +1,19 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+# Use the official ASP.NET Core SDK image
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+
+# Set the working directory in the container
 WORKDIR /app
 
-ENV ASPNETCORE_URLS=http://+:8010
-
-EXPOSE 8010
-
-# copy csproj and restore as distinct layers
-COPY *.sln .
-COPY X.Data/*.*.csproj ./X.Data/
-COPY X.Model/*.*.csproj ./X.Model/
-COPY X.Web/*.*.csproj ./X.Web/
-
-# copy everything else and build app
-COPY X.Data/. ./X.Data/
-COPY X.Model/. ./X.Model/
-COPY X.Web/. ./X.Web/
-
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
 RUN dotnet restore
 
-WORKDIR /app/X.Web
+# Copy everything else and build
+COPY . ./
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-FROM base AS final
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=build /app/X.Web/out ./
-ENTRYPOINT ["dotnet", "X.Web.dll"]
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "YourApp.dll"]

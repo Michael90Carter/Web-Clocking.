@@ -1,52 +1,49 @@
 ﻿using System;
-
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Trial.Models;
-
+using Microsoft.AspNetCore.Http;
 namespace Trial.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly ILogger<AuthController> _logger;
-        public AuthController(ILogger<AuthController> logger)
+       
+        private readonly TrialContext context;
+
+        public AuthController (TrialContext context)
         {
-            _logger = logger;
+            this.context = context;
         }
-        [HttpGet("signup")]
-        public IActionResult Signup()
+
+        [HttpPost]
+        public IActionResult SignIn(User1 user)
         {
+            var myUser = context.User1s.Where(x => x.Email == user.Email && x.Password == user.Password).FirstOrDefault();
+            if(myUser != null)
+            {
+                HttpContext.Session.SetString("UserSession", myUser.Email);
+                return RedirectToAction("Dashboard");
+            }
+            else
+            {
+                ViewBag.Message = "Login failed..";
+            }
             return View();
         }
 
-        [HttpGet("signin")]
-        public IActionResult SignIn(string returnUrl = null)
+        public IActionResult Index()
         {
-            
+            if (HttpContext.Session.GetString("UserSession") != null)
             {
-                if (returnUrl != null)
-                    return RedirectToAction(returnUrl);
-                
-                        return Redirect("/");
+                ViewBag.MySession = HttpContext.Session.GetString("UserSession").ToString();
             }
-
+            else
+            {
+                return RedirectToAction("SignIn");
+            }
             return View();
         }
-        [HttpGet("signout")]
-        [Authorize]
-      /*  public async Task<IActionResult> Signout()
-        {
-            if (SessionManager.IsAuthenticated)
-            {
-                await SessionManager.SignoutAsync();
-                return Redirect("Account/signin");
-            }
-
-            return View(new SignUpModel());
-        }*/
-
-
+          
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

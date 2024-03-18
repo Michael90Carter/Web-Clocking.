@@ -1,6 +1,9 @@
 ﻿
-﻿@{
-    ViewData["Title"] = "SignUp";
+@model SignUpModel
+@{
+    Layout = "_LayoutAuthentication";
+    ViewData["Title"] = "Sign up";
+    var ReturnUrl = ViewBag.ReturnUrl;
 }
 
 <div class="container-md">
@@ -20,27 +23,27 @@
                                 </div>
                             </div>
                             <div class="card-body pt-0">
-                                <form class="auth-form my-4" id="signUp" name="signUp" method="post" autocomplete="off">
+                                <form asp-action="SignUp" class="auth-form my-4" id="signUp" name="signUp" method="post" autocomplete="off">
 
                                     <div row>
 
                                         <div col>
                                             <div class="form-group">
-                                            <label for="FirstName">First Name</label>
+                                            <label asp-for="FirstName">First Name</label>
                                             <div class="input-group mb-3">
                                                 <span class="auth-form-icon">
                                                     <i class="dripicons-user"></i>
                                                 </span>
-                                                <input type="text" class="form-control" placeholder="Enter First Name">
+                                                <input asp-for="FirstName" class="form-control" placeholder="Enter First Name">
                                             </div>
                                         </div><!--end form-group-->
                                         <div class="form-group">
-                                            <label for="LastName">Last Name</label>
+                                            <label asp-for="LastName">Last Name</label>
                                             <div class="input-group mb-3">
                                                 <span class="auth-form-icon">
                                                     <i class="dripicons-user"></i>
                                                 </span>
-                                                <input type="text" class="form-control" placeholder="Enter Last Name">
+                                                <input asp-for="LastName" class="form-control" placeholder="Enter Last Name">
                                             </div>
                                         </div><!--end form-group-->
                                         </div>
@@ -48,33 +51,23 @@
                                     </div>                                   
 
                                     <div class="form-group">
-                                        <label for="EmailAddress">Email Address</label>
+                                        <label asp-for="EmailAddress">Email Address</label>
                                         <div class="input-group mb-3">
                                             <span class="auth-form-icon">
                                                 <i class="dripicons-user"></i>
                                             </span>
-                                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                                            <input asp-for="EmailAddress" class="form-control" placeholder="Enter Email Address">
                                         </div>
                                     </div><!--end form-group-->
 
-                                    
+
                                     <div class="form-group">
-                                        <label for="department">Department</label>
+                                        <label asp-for="Password">Password</label>
                                         <div class="input-group mb-3">
                                             <span class="auth-form-icon">
                                                 <i class="dripicons-lock"></i>
                                             </span>
-                                            <input type="text" class="form-control" placeholder="Department">
-                                        </div>
-                                    </div><!--end form-group-->
-
-                                    <div class="form-group">
-                                        <label for="userpassword">Password</label>
-                                        <div class="input-group mb-3">
-                                            <span class="auth-form-icon">
-                                                <i class="dripicons-lock"></i>
-                                            </span>
-                                            <input type="password" class="form-control" placeholder="Enter password">
+                                            <input asp-for="Password" class="form-control" placeholder="Enter password">
                                         </div>
                                     </div><!--end form-group-->
 
@@ -82,7 +75,7 @@
                                     <div class="form-group mb-0 row">
                                             <div class="col-12">
                                                 <div class="d-grid mt-3">
-                                                    <button class="btn btn-outline-primary btn-round d-flex mx-auto justify-content-center" style="min-width:200px;" type="submit" id="signup-submit-button">Register</button>
+                                                    <button value="create" class="btn btn-outline-primary btn-round d-flex mx-auto justify-content-center" style="min-width:200px;" type="submit" id="signup-submit-button">Register</button>
                                                 </div>
                                             </div>
                                             <!--end col-->

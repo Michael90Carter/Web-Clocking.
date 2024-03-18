@@ -1,6 +1,9 @@
-﻿
+﻿@model SignInModel
 ﻿@{
+    Layout = "_LayoutAuthentiation";
     ViewData["Title"] = "SignIn";
+    var ReturnUrl = ViewBag.ReturnUrl;
+
 }
 
 <div class="container-md">
@@ -21,26 +24,25 @@
                                 </div>
                             </div>
                             <div class="card-body pt-0">
-                                <form class="auth-form my-4" id="signUp" name="signUp" method="post" autocomplete="off">
+                                <form asp-action="SignIn" class="auth-form my-4" id="signUp" name="signUp" method="post" autocomplete="off">
                                  
-
                                     <div class="form-group">
-                                        <label for="EmailAddress">Email Address</label>
+                                        <label asp-for="EmailAddress">Email Address</label>
                                         <div class="input-group mb-3">
-                                            <span class="auth-form-icon">
+                                            <span class="auth-form-icon" asp-validation-for="EmailAddress">
                                                 <i class="dripicons-user"></i>
                                             </span>
-                                            <input type="text" class="form-control" placeholder="Enter Email Address">
+                                            <input asp-for="EmailAddress" class="form-control" placeholder="Enter Email Address">
                                         </div>
                                     </div><!--end form-group-->
 
                                     <div class="form-group">
-                                        <label for="userpassword">Password</label>
+                                        <label asp-for="Password">Password</label>
                                         <div class="input-group mb-3">
-                                            <span class="auth-form-icon">
+                                            <span class="auth-form-icon" asp-validation-for="Password">
                                                 <i class="dripicons-lock"></i>
                                             </span>
-                                            <input type="password" class="form-control" placeholder="Enter password">
+                                            <input asp-for="Password" class="form-control" placeholder="Enter password">
                                         </div>
                                     </div><!--end form-group-->
 
@@ -48,7 +50,7 @@
                                     <div class="form-group mb-0 row">
                                             <div class="col-12">
                                                 <div class="d-grid mt-3">
-                                                    <button class="btn btn-outline-primary btn-round d-flex mx-auto justify-content-center" style="min-width:200px;" type="submit" id="signup-submit-button">Register</button>
+                                                    <button value="create" class="btn btn-outline-primary btn-round d-flex mx-auto justify-content-center" style="min-width:200px;" type="submit" id="signup-submit-button">Register</button>
                                                 </div>
                                             </div>
                                             <!--end col-->
